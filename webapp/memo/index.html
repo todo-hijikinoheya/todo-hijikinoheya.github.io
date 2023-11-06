@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>おしゃれなメモ帳</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            margin-bottom: 20px;
+        }
+        .editor {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            min-height: 300px;
+            font-size: 16px;
+        }
+        .format-btn {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            background-color: #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .download-btn {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>おしゃれなメモ帳</h1>
+        <div class="buttons">
+            <button class="format-btn" onclick="formatBold()">太字</button>
+            <button class="format-btn" onclick="formatItalic()">斜体</button>
+            <button class="format-btn" onclick="formatUnderline()">下線</button>
+            <label for="fontsize">文字の大きさ:</label>
+            <select id="fontsize" onchange="changeFontSize()">
+                <option value="">デフォルト</option>
+                <option value="12px">小さい</option>
+                <option value="16px">普通</option>
+                <option value="20px">大きい</option>
+            </select>
+        </div>
+        <div contenteditable="true" class="editor" id="editor"></div>
+        <button class="download-btn" onclick="downloadText()">テキストファイルとして保存</button>
+        <button class="download-btn" onclick="saveToBrowser()">ブラウザに保存</button>
+    </div>
+
+    <script>
+        var editorElement = document.getElementById('editor');
+
+        function formatBold() {
+            document.execCommand('bold', false, null);
+        }
+
+        function formatItalic() {
+            document.execCommand('italic', false, null);
+        }
+
+        function formatUnderline() {
+            document.execCommand('underline', false, null);
+        }
+
+        function changeFontSize() {
+            var fontSize = document.getElementById('fontsize').value;
+            document.execCommand('fontSize', false, fontSize);
+        }
+
+        function downloadText() {
+            var text = editorElement.innerHTML;
+            var blob = new Blob([text], { type: 'text/plain' });
+            var anchor = document.createElement('a');
+            anchor.download = 'memo.txt';
+            anchor.href = URL.createObjectURL(blob);
+            anchor.click();
+        }
+
+        function saveToBrowser() {
+            var text = editorElement.innerHTML;
+            localStorage.setItem('memo', text);
+            alert('メモが保存されました。');
+        }
+
+        function loadFromBrowser() {
+            var text = localStorage.getItem('memo');
+            if (text) {
+                editorElement.innerHTML = text;
+            }
+        }
+
+        loadFromBrowser();
+    </script>
+</body>
+</html>
