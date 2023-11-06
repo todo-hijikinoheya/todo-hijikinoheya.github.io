@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ファイルアップローダー</title>
+  <style>
+    .file-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      font-family: Arial, sans-serif;
+    }
+
+    .file-input {
+      margin-bottom: 20px;
+    }
+
+    .file-preview {
+      width: 300px;
+      height: 200px;
+      border: 2px dashed #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+
+    .file-preview img {
+      max-width: 100%;
+      max-height: 100%;
+      display: none;
+    }
+
+    .file-preview.file-preview-active {
+      border-color: #3498db;
+    }
+
+    .file-preview.file-preview-active img {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="file-upload">
+    <input type="file" id="file-input" class="file-input">
+    <div class="file-preview" id="file-preview">
+      <span>ファイルを選択してください</span>
+      <img src="" alt="ファイルプレビュー">
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const fileInput = document.getElementById('file-input');
+      const filePreview = document.getElementById('file-preview');
+
+      fileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+          const reader = new FileReader();
+
+          reader.addEventListener('load', (event) => {
+            const imageUrl = event.target.result;
+            filePreview.style.backgroundImage = `url(${imageUrl})`;
+            filePreview.classList.add('file-preview-active');
+            filePreview.innerHTML = '';
+          });
+
+          reader.readAsDataURL(file);
+        } else {
+          filePreview.style.backgroundImage = '';
+          filePreview.classList.remove('file-preview-active');
+          filePreview.innerHTML = '<span>ファイルを選択してください</span>';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
