@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>掲示板</title>
+  <style>
+    /* スタイルの定義 */
+    .post {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>掲示板</h1>
+  
+  <div id="posts">
+    <!-- 投稿が表示される部分 -->
+  </div>
+  
+  <h2>新しい投稿</h2>
+  <form id="post-form">
+    <input type="text" id="author" placeholder="名前" required>
+    <textarea id="content" placeholder="内容" required></textarea>
+    <button type="submit">投稿する</button>
+  </form>
+
+  <script>
+    // フォームの送信イベントを処理する関数
+    function handleFormSubmit(event) {
+      event.preventDefault(); // フォームのデフォルトの送信動作を無効化
+
+      // 入力値を取得
+      const authorInput = document.getElementById('author');
+      const contentInput = document.getElementById('content');
+      const author = authorInput.value;
+      const content = contentInput.value;
+
+      // 新しい投稿要素を作成
+      const postElement = document.createElement('div');
+      postElement.classList.add('post');
+      postElement.innerHTML = `
+        <h3>${author}</h3>
+        <p>${content}</p>
+      `;
+
+      // 投稿を追加
+      const postsContainer = document.getElementById('posts');
+      postsContainer.appendChild(postElement);
+
+      // 入力フィールドをクリア
+      authorInput.value = '';
+      contentInput.value = '';
+    }
+
+    // フォームの送信イベントを監視
+    const form = document.getElementById('post-form');
+    form.addEventListener('submit', handleFormSubmit);
+  </script>
+</body>
+</html>
