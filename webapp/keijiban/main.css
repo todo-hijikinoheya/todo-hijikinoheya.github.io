@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .form {
+    padding: 12px;
+    background-color: #A3D5FF;
+  }
+  
+  .log {
+  }
+  
+  .log p {
+    display: flex;
+    margin: 0;
+    padding: 3px 20px;
+    line-height: 21px;
+    border-bottom: 1px solid #D9F0FF;
+  }
+  
+  .log p .name {
+    display: block;
+    min-width: 10rem;
+    word-wrap: break-word;
+    font-weight: bold;
+  }
+  
+  .log p .message {
+    display: block;
+    word-break: break-all;
+  }
+  
+  .log p.self {
+    background-color: #ecf7ff;
+  }
+  
+  .log p.self .name {
+    color: #4056F4;
+  }
+  
+  #name {
+    width: 100px;
+  }
+  
+  #message {
+    width: 400px;
+  }
