@@ -1,0 +1,111 @@
+/* 既存のCSSスタイルは省略 */
+
+.todo-app {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .add-task {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .add-task input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #007bff;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .add-task button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .add-task button:hover {
+    background-color: #0056b3;
+  }
+  
+  #task-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .task-item {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .task-item.completed {
+    background-color: #e1ecf4;
+    color: #999;
+  }
+  
+  .task-item .task-text {
+    flex: 1;
+  }
+  
+  .task-item .task-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .task-item .task-actions button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .task-item .task-actions button:hover {
+    background-color: #0056b3;
+  }
+  /* 既存のCSSスタイルは省略 */
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tab {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+}
+
+.tab span {
+  margin-right: 5px;
+}
+
+.close-tab-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
