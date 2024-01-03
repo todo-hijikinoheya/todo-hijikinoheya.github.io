@@ -82,3 +82,44 @@
   .task-item .task-actions button:hover {
     background-color: #0056b3;
   }
+  /* 既存のCSSスタイルは省略 */
+
+.task-item {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #333;
+  position: relative; /* 追加 */
+}
+
+.task-item.completed {
+  background-color: #e1ecf4;
+  color: #999;
+}
+
+.task-item .task-text {
+  flex: 1;
+}
+
+.task-item .task-actions {
+  display: flex;
+  gap: 10px;
+  position: absolute; /* 追加 */
+  right: 10px; /* 追加 */
+}
+
+.task-item .task-actions button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.task-item .task-actions button:hover {
+  background-color: #0056b3;
+}
